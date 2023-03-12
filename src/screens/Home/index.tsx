@@ -22,7 +22,7 @@ export function Home() {
         Alert.alert("Remover", `Remover o participante ${name}?`, [
             {
                 text: 'Sim',
-                onPress: () => Alert.alert("Deletado")
+                onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name))
             },
             {
                 text: 'Não',
@@ -38,7 +38,7 @@ export function Home() {
             </Text>
 
             <Text style={styles.eventDate}>
-                Sexta, 4 de novembro de 2022.
+                Domingo, 12 de março de 2023.
             </Text>
             <View style={styles.form}>
                 <TextInput
@@ -55,19 +55,6 @@ export function Home() {
                     </Text>
                 </TouchableOpacity>
             </View>
-
-            {/* Listagem utilizando ScrollView */}
-            {/* <ScrollView showsVerticalScrollIndicator={false}>
-                {
-                    participants.map(participant => (
-                        <Participant
-                            key={participant}
-                            name={participant}
-                            onRemove={() => handleParticipantRemove(participant)}
-                        />
-                    ))
-                }
-            </ScrollView> */}
 
             {/* FlatList é mais performática, pois renderiza apenas os elementos que cabem na tela */}
             <FlatList
@@ -88,6 +75,18 @@ export function Home() {
                 )}
             />
 
+            {/* Listagem utilizando ScrollView */}
+            {/* <ScrollView showsVerticalScrollIndicator={false}>
+                {
+                    participants.map(participant => (
+                        <Participant
+                            key={participant}
+                            name={participant}
+                            onRemove={() => handleParticipantRemove(participant)}
+                        />
+                    ))
+                }
+            </ScrollView> */}
         </View>
     )
 }
